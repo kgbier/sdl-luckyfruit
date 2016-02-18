@@ -1,6 +1,6 @@
 # luckyfruit by Konrad Biernacki (kgbier@gmail.com)
 This isn't really anything special, just some C++ thrown together.
-It uses SDL2, check it out [here](www.libsdl.org) (www.libsdl.org).
+It uses SDL2, check it out [here](https://www.libsdl.org) (www.libsdl.org).
 
 # Features
 * It does some type of text rendering using a bitmap image.
