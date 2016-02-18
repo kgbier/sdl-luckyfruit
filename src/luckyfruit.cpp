@@ -115,7 +115,7 @@ LuckyWindow* createWindowA() {
 	LuckyWindow* window = new LuckyWindow("WINDOW A", 20, 200);
 	LuckyPane* pane = window->pane;
 	pane->addComponent(new LuckyText("Hello World", 10, 10));
-	//window->addComponent(new LuckyButton("Press me!"), 10, 10);
+	//window->addComponent(new LuckyButton("Press me!"), 10, 20);
 	return window;
 }
 

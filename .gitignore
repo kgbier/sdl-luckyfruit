@@ -1,6 +1,5 @@
 *.o
 *.dll
 *.exe
-**/obj
 **/extern
 **/.settings 

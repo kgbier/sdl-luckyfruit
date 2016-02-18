@@ -11,9 +11,14 @@ void LuckyPane::addComponent(LuckyComponent* component) {
 }
 
 void LuckyPane::update() {
-   
+   for(unsigned int i = 0; i < components.size(); i++) {
+      components[i]->update();
+   }
 }
 
 void LuckyPane::draw() {
    SDL_RenderCopy(app->renderer, pane_tex, NULL, &(parent->window));
+   for(unsigned int i = 0; i < components.size(); i++) {
+      components[i]->draw();
+   }
 }
