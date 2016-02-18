@@ -1,5 +1,6 @@
 *.o
-**/bin
+*.dll
+*.exe
 **/obj
 **/extern
-**/.settings
+**/.settings 
