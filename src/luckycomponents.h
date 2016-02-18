@@ -11,8 +11,9 @@
 class LuckyComponent {
 protected:
    SDL_Rect bounds;
-   
 public:
+   SDL_Rect* parent_bounds;
+   
    LuckyComponent(int x, int y, int w = 0, int h = 0) 
       : bounds{x, y, w, h} { }
    
@@ -25,7 +26,6 @@ class LuckyWindow;
 class LuckyPane : public LuckyComponent {
 public:
    SDL_Texture* pane_tex;
-   
    LuckyWindow* parent;
    std::vector<LuckyComponent*> components;
    
@@ -68,6 +68,25 @@ public:
    const char* text;
   
    LuckyText(const char* t, int x, int y);
+
+   void update();
+   void draw();
+};
+
+class LuckyButton : public LuckyComponent {
+private:
+   bool hover, pressed; 
+   int padding;
+   
+   SDL_Texture* btex;
+   SDL_Texture* btex_hover; 
+   SDL_Texture* btex_press;
+   
+public:
+   const char* text;
+   SDL_Rect actual;
+   
+   LuckyButton(const char* t, int x, int y);
 
    void update();
    void draw();

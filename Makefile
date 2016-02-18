@@ -25,7 +25,11 @@ COMPILER_FLAGS = -std=c++11 -Wall -pedantic -Werror -Wl,-subsystem,windows $(STA
 LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2
 
 #This is the target that compiles our executable
-all: bin/$(TARGET)
+all: directory bin/$(TARGET)
+	
+#Ensure the directory structure is legit (HUGE THANKS TO SOH <3 FOR REQUESTING THIS)
+directory:
+	mkdir -p bin obj src
 	
 #This is the target that links our objects
 bin/$(TARGET): $(OBJECTS) $(SOURCES) $(HEADERS)

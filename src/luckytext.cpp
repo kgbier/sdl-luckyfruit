@@ -10,5 +10,5 @@ void LuckyText::update() {
 }
 
 void LuckyText::draw() {
-   app->txt->fastprint(text, bounds.x, bounds.y);
+   app->txt->fastprint(text, parent_bounds->x + bounds.x, parent_bounds->y + bounds.y);
 }

@@ -113,14 +113,13 @@ void main_loop() {
 
 LuckyWindow* createWindowA() {
 	LuckyWindow* window = new LuckyWindow("WINDOW A", 20, 200);
-	LuckyPane* pane = window->pane;
-	pane->addComponent(new LuckyText("Hello World", 10, 10));
-	//window->addComponent(new LuckyButton("Press me!"), 10, 20);
+	window->pane->addComponent(new LuckyText("Hello World", 10, 10));
 	return window;
 }
 
 LuckyWindow* createWindowB() {
 	LuckyWindow* window = new LuckyWindow("WINDOW B", 300, 200);
+	window->pane->addComponent(new LuckyButton("PRESS", 10, 10));
 	return window;
 }
 
