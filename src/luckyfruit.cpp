@@ -6,8 +6,6 @@
 
 #include "sdl_app.h"
 #include "textrenderer.h"
-#include "luckywindow.h"
-
 
 sdl_app* app = NULL; //Global
 
@@ -44,10 +42,9 @@ int main(int argc, char* args[]) {
 void main_loop() {
 	
 	std::vector<LuckyWindow*> windows;
-	printf("CRASHTESTING: CREATE WINDOWS\n");
-	windows.push_back(new LuckyWindow("WINDOW A", 20, 200));
-	windows.push_back(new LuckyWindow("WINDOW B", 300, 200));
-	printf("CRASHTESTING: WINDOWS CREATED\n");
+	windows.push_back(createWindowA());
+	windows.push_back(createWindowB());
+	
 	bool quit = false;
 	SDL_Event e; // Event handler
 	
@@ -112,6 +109,19 @@ void main_loop() {
 		
 		app->fps->tick();
 	}
+}
+
+LuckyWindow* createWindowA() {
+	LuckyWindow* window = new LuckyWindow("WINDOW A", 20, 200);
+	LuckyPane* pane = window->pane;
+	pane->addComponent(new LuckyText("Hello World", 10, 10));
+	//window->addComponent(new LuckyButton("Press me!"), 10, 10);
+	return window;
+}
+
+LuckyWindow* createWindowB() {
+	LuckyWindow* window = new LuckyWindow("WINDOW B", 300, 200);
+	return window;
 }
 
 /*********************************

@@ -32,5 +32,5 @@ bin/$(TARGET): $(OBJECTS) $(SOURCES) $(HEADERS)
 	$(CC) $(OBJECTS) $(COMPILER_FLAGS) $(LIBRARY_PATHS) $(LINKER_FLAGS) -o $@
 
 #This is the target that compiles our objects
-obj/%.o : src/%.cpp src/%.h
+obj/%.o : src/%.cpp
 	$(CC) $< -c $(COMPILER_FLAGS) $(INCLUDE_PATHS) -o $@
