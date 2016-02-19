@@ -26,6 +26,11 @@ void LuckyWindow::updateWindow() {
    frame.w = window.w + framewidth*2;
    frame.h = window.h + handleheight + framewidth;
    
+   handle.x = frame.x;
+   handle.y = frame.y;
+   handle.w = frame.w;
+   handle.h = handleheight;
+   
    int shadowwidth = 4;
    shadow.x = frame.x - shadowwidth;
    shadow.y = frame.y + shadowwidth;
@@ -37,7 +42,7 @@ bool LuckyWindow::trygrab() {
    SDL_Point mousepos;
    SDL_GetMouseState(&(mousepos.x), &(mousepos.y));
    
-   if(SDL_PointInRect(&mousepos, &frame)) {
+   if(SDL_PointInRect(&mousepos, &handle)) {
       locked = true;
       grabbedx = mousepos.x - window.x;
       grabbedy = mousepos.y - window.y;

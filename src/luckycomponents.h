@@ -41,6 +41,7 @@ class LuckyWindow {
 private:
    SDL_Rect shadow;
    SDL_Rect frame;
+   SDL_Rect handle;
    
    bool locked = false;
    int grabbedx, grabbedy;
@@ -78,6 +79,7 @@ private:
    bool hover, pressed; 
    int padding;
    
+   
    SDL_Texture* btex;
    SDL_Texture* btex_hover; 
    SDL_Texture* btex_press;
@@ -87,6 +89,8 @@ public:
    SDL_Rect actual;
    
    LuckyButton(const char* t, int x, int y);
+   
+   void (*onClick)(void*) = NULL;
 
    void update();
    void draw();

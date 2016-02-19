@@ -4,6 +4,7 @@
 #include "assetmanager.h"
 #include "fps.h"
 #include "textrenderer.h"
+#include "luckycomponents.h"
 
 #define WALLPAPER_RGB 0x15, 0x15, 0x15
 
@@ -14,6 +15,8 @@ public:
    AssetManager* assets;
    FrameRate* fps;
    TextRenderer* txt;
+   
+   std::vector<LuckyWindow*> windows;
    
    void init();
 };

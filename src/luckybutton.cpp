@@ -30,15 +30,21 @@ void LuckyButton::update() {
    SDL_Point mousepos;
    SDL_GetMouseState(&(mousepos.x), &(mousepos.y));
    
-   if(SDL_PointInRect(&mousepos, &actual)) {
+   if(SDL_PointInRect(&mousepos, &actual)) { // If the mouse is over the button
       hover = true;
       if((SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT))) { // If LMB is down
          pressed = true;
-      } else {
-         pressed = false;
+      } else { // LMB is up
+         if(pressed) { // If LMB was down just before, we have "clicked" the button 
+            if(onClick != NULL) { // make sure onClick is valid!
+               onClick(NULL);
+            }
+            pressed = false;
+         }
       }
    } else {
       hover = false;
+      pressed = false;
    }
 }
 

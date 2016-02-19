@@ -41,9 +41,9 @@ int main(int argc, char* args[]) {
 
 void main_loop() {
 	
-	std::vector<LuckyWindow*> windows;
-	windows.push_back(createWindowA());
-	windows.push_back(createWindowB());
+
+	app->windows.push_back(createWindowA());
+	//windows.push_back(createWindowB());
 	
 	bool quit = false;
 	SDL_Event e; // Event handler
@@ -63,11 +63,11 @@ void main_loop() {
 					break;
 				case SDL_MOUSEBUTTONDOWN: // LMB Pressed
 					if(e.button.button == SDL_BUTTON_LEFT) {
-						for(int i = windows.size() - 1; i >= 0; i--) {
-							if(windows[i]->trygrab()) {
-								LuckyWindow *clicked = windows[i];
-								windows.erase(windows.begin()+i);
-								windows.push_back(clicked);
+						for(int i = app->windows.size() - 1; i >= 0; i--) {
+							if(app->windows[i]->trygrab()) {
+								LuckyWindow *clicked = app->windows[i];
+								app->windows.erase(app->windows.begin()+i);
+								app->windows.push_back(clicked);
 								break;
 							}
 						}
@@ -81,16 +81,16 @@ void main_loop() {
 		}
 		
 		//update entities
-		for(unsigned int i = 0; i < windows.size(); i++) {
-			windows[i]->update();
+		for(unsigned int i = 0; i < app->windows.size(); i++) {
+			app->windows[i]->update();
 		}
 		
 		//wipe framebuffer
 		SDL_RenderClear(app->renderer);
 		
 		//draw entities to framebuffer
-		for(unsigned int i = 0; i < windows.size(); i++) {
-			windows[i]->draw();
+		for(unsigned int i = 0; i < app->windows.size(); i++) {
+			app->windows[i]->draw();
 		}		
 		
 		app->txt->fastprint("HELLO WORLD", 10, 10);
@@ -100,7 +100,7 @@ void main_loop() {
 		app->txt->fastprint("WELL, CLEARLY. NO-ONE KNOWS.", 10, 50);
 		app->txt->fastprint("*GASP*, HE SAID. 10 ^ 20.", 10, 60);
 		app->txt->fastprint("10 + 2^2 = SOMETHING REALLY F#(&!<>/\'\" HUGE", 10, 70);
-		app->txt->fastprint("I'M MR. SH\r\r\r\r\r LOOK AT MEE\r! <-(THIS TESTED INVALID CHARS)", 10, 80);
+		app->txt->fastprint("I'M MR. SH\r\r\r\r\r LOOK AT MEE\r! <-- (THIS TESTED INVALID CHARS)", 10, 80);
 		app->txt->fastprint("! \"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`{}|~", 10, 90);
 		app->fps->draw();
 		
@@ -111,9 +111,27 @@ void main_loop() {
 	}
 }
 
+void btn_click_Open (void*) {
+	LuckyWindow* window = new LuckyWindow("Production Window", 20, 200);
+	window->pane->addComponent(new LuckyText("This is a child window", 10, 10));
+	app->windows.push_back(window);
+}
+
+void btn_click_Close (void*) {
+	app->windows.pop_back();
+}
+
 LuckyWindow* createWindowA() {
 	LuckyWindow* window = new LuckyWindow("WINDOW A", 20, 200);
-	window->pane->addComponent(new LuckyText("Hello World", 10, 10));
+	window->pane->addComponent(new LuckyText("Window A Test:", 10, 10));
+	window->pane->addComponent(new LuckyText("Open Window.", 20, 20));
+	LuckyButton* btnOpen = new LuckyButton("OPEN", 20, 30);
+	btnOpen->onClick = btn_click_Open;
+	window->pane->addComponent(btnOpen);
+	window->pane->addComponent(new LuckyText("Close Window.", 20, 55));
+	LuckyButton* btnClose = new LuckyButton("CLOSE", 20, 65);
+	btnClose->onClick = btn_click_Close;
+	window->pane->addComponent(btnClose);
 	return window;
 }
 
