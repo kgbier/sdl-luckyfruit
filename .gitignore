@@ -1,5 +1,8 @@
 *.o
 *.dll
-*.exe
 **/extern
 **/.settings 
+
+/bin
+/obj
+.vscode
