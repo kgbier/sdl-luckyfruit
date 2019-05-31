@@ -3,11 +3,6 @@
 
 //CURRENTLY SUPPORTED - ASCII 32|0x20 (SPACE) to ASCII 126|0x7E (~)
 TextRenderer::TextRenderer() {
-   charWidth = 6;
-   charHeight = 7;
-   spriteSheetOffset = 0x20; // Where our first sprite (0,0) appears in the ASCII character list
-   guideOffset = 1; // Px. Distance between characters in the spritesheet
-   kernOffset = 1; // Px. Distance to leave between characters when drawing
    font_tex = app->assets->getTex("FONTMAP"); 
 }
 
@@ -45,6 +40,13 @@ void TextRenderer::fastprint(const char* input, int x, int y) {
       writecursor.x += charWidth + kernOffset;
       ptr++;
    }
+}
+
+int TextRenderer::measureWidth(const char* input) {
+   if(input == NULL) return 0;
+
+   const int length = strlen(input);
+   return (length * charWidth) + (length * kernOffset);
 }
 
 // print takes a width number, which is max pixel length to draw in before starting on a new line

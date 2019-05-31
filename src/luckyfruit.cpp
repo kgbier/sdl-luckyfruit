@@ -15,22 +15,13 @@ int main(int argc, char* args[]) {
 	printf("DEBUG: INITIALISING SDL\n");
 	
 	if(SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+		printf("ERROR: SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
 	} else {
-		printf("DEBUG: ALLOCATING APP\n");
+		printf("DEBUG: INITIALISING APP\n");
 		app = new sdl_app();
-		//Create window
-		printf("DEBUG: INITIALISING SDL_WINDOW\n");
-		app->window = SDL_CreateWindow("LUCKYFRUIT", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-		if(app->window == NULL) {
-			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
-		} else {
-			printf("DEBUG: WINDOW (%dx%d) INITIALISED\n", SCREEN_WIDTH, SCREEN_HEIGHT);
-			printf("DEBUG: INITIALISING APP\n");
-			app->init();
-			printf("DEBUG: STARTING MAIN LOOP\n");
-			main_loop(); // Where the magic happens
-		}
+		app->init();
+		printf("DEBUG: STARTING MAIN LOOP\n");
+		main_loop(); // Where the magic happens
 	}
 	
 	SDL_DestroyWindow(app->window); //Destroy window
