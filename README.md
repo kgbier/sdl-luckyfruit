@@ -6,18 +6,18 @@ It uses SDL2, check it out [here](https://www.libsdl.org) (www.libsdl.org).
 * It does some type of text rendering using a bitmap image.
 * It has some windows you can drag around.
 
-## planned features?
-* nothing really...
+## Planned features?
+* Bundling assets into a blob to pull in at load time
+* Better layout system (Constraints? Flow layouts?)
+* More widgets
+* ...?
 
 # Dev environment
-* Written on Windows using mingw32 and its g++.
-* The makefile statically links some mingw32 dlls for executable portability.
+* Written and tested on MacOS Mojave
 
 # Build instructions
-* On Windows using mingw32 run make.bat. 
-* OR invoke make, it'll compile into an 'obj' folder and link into the 'bin' folder.
+* Invoke `make`, it'll build the application into the `bin` folder.
 
 # Run instructions
-* Make sure you have the bitmap font in the 'bin/res' directory.
 * As this uses SDL2, (on Windows) ensure you have an up-to-date SDL.dll file next to the executable.
-* Run the executable from the 'bin' directory.
+* Run the executable from the `bin` directory.
