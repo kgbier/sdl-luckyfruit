@@ -16,6 +16,7 @@ LIBRARY_PATHS = -L/usr/local/Cellar/sdl2/2.0.9_1/lib
 # Additional compilation flags we're using
 # -Wl,-subsystem,windows will omit the console window on Windows
 COMPILER_FLAGS = -std=c++11 -Wall -pedantic -Werror
+CXXFLAGS = -O3
 
 # The libraries we're linking against
 LINKER_FLAGS = -lSDL2main -lSDL2
@@ -33,11 +34,11 @@ bundle: bin
 
 # Link our objects
 bin/$(TARGET): $(OBJECTS) $(SOURCES) $(HEADERS)
-	$(CC) $(OBJECTS) $(COMPILER_FLAGS) $(LIBRARY_PATHS) $(LINKER_FLAGS) -o $@
+	$(CC) $(OBJECTS) $(COMPILER_FLAGS) $(CXXFLAGS) $(LIBRARY_PATHS) $(LINKER_FLAGS) -o $@
 
 # Compile our objects
 obj/%.o : src/%.cpp
-	$(CC) $< -c $(COMPILER_FLAGS) $(INCLUDE_PATHS) -o $@
+	$(CC) $< -c $(COMPILER_FLAGS) $(CXXFLAGS) $(INCLUDE_PATHS) -o $@
 
 # Clean our build directories
 .PHONY: clean
