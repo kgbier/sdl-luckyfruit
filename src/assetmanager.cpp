@@ -21,7 +21,7 @@ AssetManager::AssetManager() {
    amask = 0xFF000000;
 #endif
 
-   surf = SDL_LoadBMP("res/font.bmp");
+   surf = SDL_LoadBMP("assets/font.bmp");
    SDL_SetColorKey(surf, SDL_TRUE, 0x00000000); // Mark black as our transparent colour
    textureLibrary["FONTMAP"] = SDL_CreateTextureFromSurface(app->renderer, surf); // Font
    
