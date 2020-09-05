@@ -5,4 +5,17 @@
 
 /bin
 /obj
+
+# VSCode
 .vscode
+
+# Visual studio
+.vs/
+Debug/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+x64/
+x32/
+
