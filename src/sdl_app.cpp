@@ -19,6 +19,15 @@ bool sdl_app::init() {
    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
    SDL_GetRendererOutputSize(app->renderer, &renderer_w, &renderer_h);
    printf("DEBUG: RENDERER (%dx%d) INITIALISED\n", renderer_w, renderer_h);
+
+   if(renderer_w != SCREEN_WIDTH || renderer_h != SCREEN_HEIGHT) {
+      float scale_w = (float)renderer_w / (float)SCREEN_WIDTH;
+      float scale_h = (float)renderer_h / (float)SCREEN_HEIGHT;
+
+      printf("DEBUG: SCALING SET (%.2fx%.2f)\n", scale_w, scale_h);
+
+      SDL_RenderSetScale(renderer, scale_w, scale_h);
+   }
    
    SDL_SetRenderDrawColor(renderer, WALLPAPER_RGB, 0xFF);
    assets = new AssetManager();
