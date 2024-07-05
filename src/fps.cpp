@@ -36,7 +36,7 @@ void FrameRate::tick() {
 }
 
 void FrameRate::draw() {
-	printf(fps_str_buffer, "%.2f FPS", fps);
+	snprintf(fps_str_buffer, FPS_STR_BUFF_SIZE, "%.2f FPS", fps);
 	int width = TextRenderer::measureWidth(fps_str_buffer);
-	app->txt->fastprint(fps_str_buffer, app->renderer_w - width - 10, 10);
+	app->txt->fastprint(fps_str_buffer, app->window_w - width - 10, 10);
 }

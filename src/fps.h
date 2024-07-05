@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 
-#define FPS_STR_BUFF_SIZE 10
+#define FPS_STR_BUFF_SIZE 16
 
 #define FRAMES_TO_COMPUTE 30
 #define FRAME_RATE_LOCK 144.0f
