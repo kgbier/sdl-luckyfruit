@@ -1,0 +1,19 @@
+.{
+    .name = .luckyfruit,
+    .fingerprint = 0xfb4ccd6e4cecaff,
+    .version = "0.0.0",
+    .dependencies = .{
+        .SDL = .{
+            .url = "https://github.com/allyourcodebase/SDL/archive/25dc764272bf117198f3cd6f44f52dae5c45d60a.zip",
+            .hash = "SDL-2.32.10-JToi38G1EgFICTNzwfhy7XOMuWw7gN1xDvPOQ5CCoI8R",
+        },
+    },
+    .paths = .{
+        "README.md",
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "lib",
+        "assets",
+    },
+}
